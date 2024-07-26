@@ -1,6 +1,59 @@
-[gd_scene load_steps=2 format=3 uid="uid://rf0gbpqowg8"]
+[gd_scene load_steps=3 format=3 uid="uid://rf0gbpqowg8"]
 
 [ext_resource type="Script" path="res://scripts/scenes/main_scene.gd" id="1_vlxs7"]
+[ext_resource type="PackedScene" uid="uid://gq8bssc580mn" path="res://scenes/ui/ping_label.tscn" id="2_rhksp"]
 
-[node name="main" type="Node2D"]
+[node name="main" type="Control" node_paths=PackedStringArray("_ping_menu_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_vlxs7")
+_ping_menu_label = NodePath("PingLabel")
+
+[node name="PingLabel" parent="." instance=ExtResource("2_rhksp")]
+
+[node name="SignIn" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ContentMargin" type="MarginContainer" parent="SignIn"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContentVBox" type="VBoxContainer" parent="SignIn/ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Email" type="LineEdit" parent="SignIn/ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="Password" type="LineEdit" parent="SignIn/ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="SignIn/ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="Access" type="Button" parent="SignIn/ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Acessar"
+
+[node name="Create" type="Button" parent="SignIn/ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Nova Conta"
