@@ -19,8 +19,8 @@ enum AttackType {
 
 var player_id: int
 var player_name: String
+var is_local_player: bool = false
 
-var _is_local_player: bool = true
 var _last_direction: Vector2 = Vector2.DOWN
 var _is_attacking: bool = false
 
@@ -29,17 +29,16 @@ var _update_interval: float = 0.1
 var _tween_duration: float = 0.2
 
 func _ready() -> void:
+	print('PlayerID: ', player_id)
+	print('PlayerName: ',player_name)
+	print('PlayerLocal: ',is_local_player)
 	_player_name.text = player_name
-	_camera.enabled = _is_local_player
+	_camera.enabled = is_local_player
 	play_animation('idle', _last_direction)
 
 
-#func _enter_tree() -> void:
-	#_is_local_player = player_id == multiplayer.get_unique_id()
-
-
 func _physics_process(delta: float) -> void:
-	if _is_local_player:
+	if is_local_player:
 		handle_input()
 		#if (Time.get_ticks_msec() - _last_update_time) / 1000.0 >= _update_interval:
 			#send_position_to_server()

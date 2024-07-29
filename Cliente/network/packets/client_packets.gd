@@ -5,6 +5,13 @@ extends RefCounted
 
 
 enum list {
-	ping,
-	count
+  pingRequest,
+  signInRequest,
+  signUpRequest,
+  createCharacterRequest,
+  useCharacterRequest,
+  mapInfoRequest,
+  mapPlayerUpdateRequest,
+  mapPlayersRequest,
+  length,
 }

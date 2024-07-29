@@ -164,7 +164,7 @@ class PacketClient extends RefCounted:
 
 	var alive: bool:
 		get: return _client._connected
-		
+
 	var endianness: Endianness:
 		get: return Endianness.Big if _client._stream.big_endian else Endianness.Little
 		set(value): _client._stream.big_endian = value == Endianness.Big
@@ -184,9 +184,9 @@ class PacketClient extends RefCounted:
 
 	func connect_to_host(host: String, port: int) -> Error:
 		var result := await _client.connect_to_host(host, port)
-		
+
 		_begin_receive()
-		
+
 		return result
 
 

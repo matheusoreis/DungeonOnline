@@ -1,0 +1,63 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4pad324j6rk6"]
+
+[ext_resource type="Script" path="res://scenes/ui/signup_panel.gd" id="1_v70o1"]
+
+[node name="SignUpPanel" type="PanelContainer" node_paths=PackedStringArray("username_edit", "email_edit", "password_edit", "re_password_edit")]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v70o1")
+username_edit = NodePath("ContentMargin/ContentVBox/Username")
+email_edit = NodePath("ContentMargin/ContentVBox/Email")
+password_edit = NodePath("ContentMargin/ContentVBox/Password")
+re_password_edit = NodePath("ContentMargin/ContentVBox/RePassword")
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContentVBox" type="VBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Username" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+placeholder_text = "Usuário"
+
+[node name="Email" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+placeholder_text = "email"
+
+[node name="Password" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+placeholder_text = "Senha"
+
+[node name="RePassword" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+placeholder_text = "Repetir Senha"
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="Create" type="Button" parent="ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Criar"
+
+[node name="Back" type="Button" parent="ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Voltar"
+
+[connection signal="pressed" from="ContentMargin/ContentVBox/ButtonsVBox/Create" to="." method="_on_create_pressed"]
+[connection signal="pressed" from="ContentMargin/ContentVBox/ButtonsVBox/Back" to="." method="_on_back_pressed"]

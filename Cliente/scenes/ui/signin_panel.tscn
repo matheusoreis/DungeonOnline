@@ -1,0 +1,51 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfyb5l3vs1dir"]
+
+[ext_resource type="Script" path="res://scenes/ui/signin_panel.gd" id="1_okpnh"]
+
+[node name="SignInPanel" type="PanelContainer" node_paths=PackedStringArray("email_edit", "password_edit")]
+custom_minimum_size = Vector2(200, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -100.0
+offset_top = -84.0
+offset_right = 100.0
+offset_bottom = 84.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_okpnh")
+email_edit = NodePath("ContentMargin/ContentVBox/Email")
+password_edit = NodePath("ContentMargin/ContentVBox/Password")
+
+[node name="ContentMargin" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="ContentVBox" type="VBoxContainer" parent="ContentMargin"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Email" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="Password" type="LineEdit" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="ContentMargin/ContentVBox"]
+layout_mode = 2
+
+[node name="Access" type="Button" parent="ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Acessar"
+
+[node name="Create" type="Button" parent="ContentMargin/ContentVBox/ButtonsVBox"]
+layout_mode = 2
+text = "Nova Conta"
+
+[connection signal="pressed" from="ContentMargin/ContentVBox/ButtonsVBox/Access" to="." method="_on_access_pressed"]
+[connection signal="pressed" from="ContentMargin/ContentVBox/ButtonsVBox/Create" to="." method="_on_create_pressed"]

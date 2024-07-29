@@ -1,8 +1,7 @@
-[gd_scene load_steps=32 format=3 uid="uid://bbr60oq3xovsq"]
+[gd_scene load_steps=30 format=3 uid="uid://bbr60oq3xovsq"]
 
 [ext_resource type="Script" path="res://scenes/players/base_character.gd" id="1_dy70s"]
 [ext_resource type="Texture2D" uid="uid://bcg78elt0o1vu" path="res://assets/graphics/players/base.png" id="1_wef3n"]
-[ext_resource type="FontFile" uid="uid://vlbbyms6juu2" path="res://assets/fonts/ChevyRay.ttf" id="3_0vly2"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_uw4vx"]
 radius = 2.0
@@ -456,18 +455,15 @@ _data = {
 "walking_up_right": SubResource("Animation_3g86l")
 }
 
-[sub_resource type="LabelSettings" id="LabelSettings_hmx47"]
-font = ExtResource("3_0vly2")
-font_size = 15
-outline_size = 8
-outline_color = Color(0.163823, 0.20017, 0.226596, 1)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_mv0nv"]
-radius = 48.8365
+[sub_resource type="LabelSettings" id="LabelSettings_ulvd3"]
+font_size = 20
+outline_size = 10
+outline_color = Color(0.154325, 0.189169, 0.2145, 1)
+shadow_size = 0
 
 [node name="BaseCharacter" type="CharacterBody2D" node_paths=PackedStringArray("_animation_player", "_player_name", "_camera")]
-position = Vector2(206, 143)
 motion_mode = 1
+platform_on_leave = 2
 script = ExtResource("1_dy70s")
 _animation_player = NodePath("AnimationPlayer")
 _player_name = NodePath("PlayerName")
@@ -500,22 +496,15 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = -19.0
-offset_top = -37.0
+offset_top = -42.0
 offset_right = 58.0
-offset_bottom = -21.0
+offset_bottom = -14.0
 grow_vertical = 0
 scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 4
-label_settings = SubResource("LabelSettings_hmx47")
+label_settings = SubResource("LabelSettings_ulvd3")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
-[node name="ProcessingArea" type="Area2D" parent="."]
-
-[node name="Collision" type="CollisionShape2D" parent="ProcessingArea"]
-shape = SubResource("CircleShape2D_mv0nv")
-
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_animation_finished"]
-[connection signal="body_entered" from="ProcessingArea" to="." method="_on_body_entered_in_processing_area"]
-[connection signal="body_exited" from="ProcessingArea" to="." method="_on_body_exited_in_processing_area"]

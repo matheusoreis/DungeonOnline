@@ -17,6 +17,12 @@ func _init(scene_tree: SceneTree) -> void:
 		_receiver_message_handlers.append(null)
 	
 	_receiver_message_handlers[_packets.list.ping] = PingReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.alert] = AlertReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.sign_in] = SignInReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.sign_up] = SignUpReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.spawn_local_player] = SpawnLocalPlayerReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.spawn_to_all_players] = SpawnToAllPlayerReceiverMessage.new()
+	_receiver_message_handlers[_packets.list.spawn_all_players] = SpawnAllPlayersReceiverMessage.new()
 
 func receiver_data(data: PackedByteArray) -> void:
 	var buffer := StreamPeerBuffer.new()

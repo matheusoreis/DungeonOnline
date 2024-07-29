@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Network="*res://network/network.gd"
 Globals="*res://scripts/utils/globals_utils.gd"
+MapsLoader="*res://scenes/maps/maps_loader.gd"
 
 [input]
 
