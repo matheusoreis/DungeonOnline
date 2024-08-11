@@ -19,7 +19,7 @@ enum AttackType {
 
 var player_id: int
 var player_name: String
-var is_local_player: bool = false
+var is_local_player: bool = true
 
 var _last_direction: Vector2 = Vector2.DOWN
 var _is_attacking: bool = false
@@ -50,7 +50,7 @@ func handle_input() -> void:
 		return
 
 	var direction = get_movement_direction()
-	
+
 	if direction != Vector2.ZERO:
 		_last_direction = direction
 		velocity = direction * _speed
@@ -85,7 +85,7 @@ func play_animation(action: String, direction: Vector2) -> void:
 		return
 
 	var direction_label = get_direction_label(direction)
-	
+
 	if direction_label != '':
 		_animation_player.play('%s_%s' % [action, direction_label])
 

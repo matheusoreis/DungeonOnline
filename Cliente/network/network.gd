@@ -1,4 +1,4 @@
 extends Node
 
 
-var async_socket := Socket.PacketClient.new(Socket.Header.U32)
+var websocket := WebSocketClient.new()
