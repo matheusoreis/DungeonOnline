@@ -5,6 +5,7 @@ extends RefCounted
 
 
 enum list {
-  ping,
-  length,
+	ping,
+	sigin,
+	length,
 }

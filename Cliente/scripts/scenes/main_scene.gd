@@ -3,6 +3,7 @@ extends Control
 
 var _processor: Processor
 var _ping_message: PingMessage
+var _signin_message
 
 
 @export_category('Interfaces')
@@ -23,16 +24,16 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	get_window().size.y = DisplayServer.screen_get_size().y
+	#get_window().size.y = DisplayServer.screen_get_size().y
+#
+	#DisplayServer.window_is_focused()
+#
+	#ProjectSettings.set_setting(
+		#"display/window/size/always_on_top", true
+	#)
 
-	DisplayServer.window_is_focused()
-
-	ProjectSettings.set_setting(
-		"display/window/size/always_on_top", true
-	)
-
-	var window_position: Vector2 = get_window().position
-	get_window().position = Vector2(window_position.x * 2, 0)
+	#var window_position: Vector2 = get_window().position
+	#get_window().position = Vector2(window_position.x * 2, 0)
 
 
 	_scene_tree = get_tree()
@@ -43,6 +44,7 @@ func _ready() -> void:
 
 	_processor = Processor.new()
 	_ping_message = PingMessage.new()
+	_signin_message = SignInMessage.new()
 
 	_register_packet_handlers()
 
@@ -89,7 +91,11 @@ func _on_disconnected() -> void:
 
 func _register_packet_handlers() -> void:
 	_processor.register_message(ServerHeaders.list.ping, Callable(self, "_on_ping_packet"))
+	_processor.register_message(ServerHeaders.list.signIn, Callable(self, "_on_signin_packet"))
 
 
 func _on_ping_packet(packet: Packet) -> void:
 	_ping_message.handle(packet, _scene_tree)
+
+func _on_signin_packet(packet: Packet) -> void:
+	_signin_message.handle(packet, _scene_tree)

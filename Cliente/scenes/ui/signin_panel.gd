@@ -1,24 +1,27 @@
 extends PanelContainer
-#
-#
-#@export var email_edit : LineEdit
-#@export var password_edit : LineEdit
-#@export var signup_panel: PanelContainer
-#
-#var _signin_sender: SignInSenderMessage
-#var _client: Socket.PacketClient
-#
-#
-#func _ready() -> void:
-	#_signin_sender = SignInSenderMessage.new()
-	#_client = Network.async_socket
-	#_client.endianness = Socket.Endianness.Little
-#
-#
-#func _on_access_pressed() -> void:
-	#_signin_sender.send_data(_client, email_edit.text, password_edit.text)
-#
-#
-#func _on_create_pressed() -> void:
-	#signup_panel.show()
-	#self.hide()
+
+
+@export var email_edit : LineEdit
+@export var password_edit : LineEdit
+@export var signup_panel: PanelContainer
+
+var _signin: SignInMessage
+
+
+func _ready() -> void:
+	_signin = SignInMessage.new()
+
+
+func _on_access_pressed() -> void:
+	_signin.email = email_edit.text
+	_signin.password = password_edit.text
+	_signin.major = 1
+	_signin.minor = 0
+	_signin.revision = 0
+	
+	_signin.send()
+
+
+func _on_create_pressed() -> void:
+	signup_panel.show()
+	self.hide()
