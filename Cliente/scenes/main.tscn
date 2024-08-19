@@ -38,7 +38,6 @@ alignment = 2
 [node name="Menu" type="CanvasLayer" parent="."]
 
 [node name="SignInPanel" parent="Menu" instance=ExtResource("3_o6pya")]
-visible = false
 
 [node name="SignUpPanel" parent="Menu" instance=ExtResource("4_nw2bb")]
 visible = false
