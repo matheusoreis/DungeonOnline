@@ -29,9 +29,6 @@ var _update_interval: float = 0.1
 var _tween_duration: float = 0.2
 
 func _ready() -> void:
-	print('PlayerID: ', player_id)
-	print('PlayerName: ',player_name)
-	print('PlayerLocal: ',is_local_player)
 	_player_name.text = player_name
 	_camera.enabled = is_local_player
 	play_animation('idle', _last_direction)

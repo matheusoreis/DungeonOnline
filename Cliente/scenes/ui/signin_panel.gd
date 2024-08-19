@@ -15,10 +15,7 @@ func _ready() -> void:
 func _on_access_pressed() -> void:
 	_signin.email = email_edit.text
 	_signin.password = password_edit.text
-	_signin.major = 1
-	_signin.minor = 0
-	_signin.revision = 0
-	
+
 	_signin.send()
 
 

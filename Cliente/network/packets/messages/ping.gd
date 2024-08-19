@@ -14,7 +14,11 @@ func from_packet(_packet: Packet) -> PingMessage:
 
 
 func to_packet() -> Packet:
-	return Packet.new(ClientHeaders.list.ping, PackedByteArray())
+	var packet := Packet.new()
+	packet.id = ClientHeaders.list.ping
+	packet.content = PackedByteArray()
+
+	return packet
 
 
 func send() -> void:

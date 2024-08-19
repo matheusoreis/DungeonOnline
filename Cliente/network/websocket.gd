@@ -15,12 +15,18 @@ func _init():
 	_socket = WebSocketPeer.new()
 
 
-func connect_to_host(host: String, port: int, use_ssl := false) -> void:
+func connect_to_host(host: String, port: int, use_ssl := false) -> Error:
 	var url = "ws://" + host + ":" + str(port)
+
 	if use_ssl:
 		url = "wss://" + host + ":" + str(port)
 
-	_socket.connect_to_url(url)
+	var error = _socket.connect_to_url(url)
+
+	if error != OK:
+		return error
+
+	return OK
 
 
 func disconnect_from_host() -> void:
@@ -30,6 +36,9 @@ func disconnect_from_host() -> void:
 
 
 func send_packet(packet: Packet) -> Error:
+	if not _connected:
+		return ERR_CONNECTION_ERROR
+
 	var result := _socket.put_packet(packet.to_packet_byte_array())
 	if result != OK:
 		disconnect_from_host()

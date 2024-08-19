@@ -1,0 +1,40 @@
+[gd_scene load_steps=2 format=3 uid="uid://ct1upy5eidqoh"]
+
+[ext_resource type="Script" path="res://scenes/ui/alert/alert_ui.gd" id="1_as0t6"]
+
+[node name="AlertUI" type="PanelContainer" node_paths=PackedStringArray("timer", "message")]
+offset_right = 56.0
+offset_bottom = 41.0
+size_flags_horizontal = 0
+script = ExtResource("1_as0t6")
+timer = NodePath("Timer")
+message = NodePath("MarginContainer/AlertHBox/MessageLabel")
+timeout = 5.0
+
+[node name="Timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_direction = 2
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="AlertHBox" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="MessageLabel" type="Label" parent="MarginContainer/AlertHBox"]
+layout_mode = 2
+vertical_alignment = 1
+
+[node name="CloseButton" type="Button" parent="MarginContainer/AlertHBox"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "X"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="MarginContainer/AlertHBox/CloseButton" to="." method="_on_close_button_pressed"]

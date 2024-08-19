@@ -6,6 +6,7 @@ extends RefCounted
 
 enum list {
 	ping,
+	alert,
 	signIn,
 	length,
 }

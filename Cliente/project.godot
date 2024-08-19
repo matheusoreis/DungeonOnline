@@ -21,14 +21,6 @@ Network="*res://network/network.gd"
 Globals="*res://scripts/utils/globals_utils.gd"
 MapsLoader="*res://scenes/maps/maps_loader.gd"
 
-[display]
-
-window/size/always_on_top=true
-window/size/transparent=true
-window/size/extend_to_title=true
-window/subwindows/embed_subwindows=false
-window/per_pixel_transparency/allowed=true
-
 [input]
 
 walking_left={

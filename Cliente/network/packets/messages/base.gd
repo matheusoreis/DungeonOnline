@@ -18,7 +18,11 @@ func from_packet(packet: Packet) -> BaseMessage:
 # Converte a mensagem atual em um pacote para ser enviado
 func to_packet() -> Packet:
 	# Retorna um novo pacote com o ID e o conteúdo da mensagem
-	return Packet.new(0, PackedByteArray())
+	var packet := Packet.new()
+	packet.id = 0
+	packet.content = PackedByteArray()
+
+	return packet
 
 
 # Envia a mensagem através do WebSocket
