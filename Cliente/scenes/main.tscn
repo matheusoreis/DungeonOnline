@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://rf0gbpqowg8"]
+[gd_scene load_steps=5 format=3 uid="uid://rf0gbpqowg8"]
 
 [ext_resource type="Script" path="res://scripts/scenes/main_scene.gd" id="1_vlxs7"]
-[ext_resource type="PackedScene" uid="uid://gq8bssc580mn" path="res://scenes/ui/ping_label.tscn" id="2_rhksp"]
-[ext_resource type="PackedScene" uid="uid://bfyb5l3vs1dir" path="res://scenes/ui/signin_panel.tscn" id="3_o6pya"]
+[ext_resource type="PackedScene" uid="uid://d2u01d6wpxjbn" path="res://scenes/ui/authenticate/authenticate_ui.tscn" id="2_g0bhb"]
 [ext_resource type="PackedScene" uid="uid://b4pad324j6rk6" path="res://scenes/ui/signup_panel.tscn" id="4_nw2bb"]
 [ext_resource type="PackedScene" uid="uid://yimfxfg4pwl3" path="res://scenes/ui/create_character_panel.tscn" id="5_rs6c0"]
 
@@ -24,7 +23,8 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -833.0
-offset_top = -106.0
+offset_top = -156.0
+offset_bottom = -50.0
 grow_horizontal = 0
 grow_vertical = 0
 theme_override_constants/margin_right = 20
@@ -37,8 +37,43 @@ alignment = 2
 
 [node name="Menu" type="CanvasLayer" parent="."]
 
-[node name="SignInPanel" parent="Menu" instance=ExtResource("3_o6pya")]
-visible = false
+[node name="AuthenticateUI" parent="Menu" instance=ExtResource("2_g0bhb")]
+
+[node name="FooterUI" type="PanelContainer" parent="Menu"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -41.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="ContentMargin" type="MarginContainer" parent="Menu/FooterUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 5
+
+[node name="ContentHBox" type="HBoxContainer" parent="Menu/FooterUI/ContentMargin"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreateAccountButton" type="Button" parent="Menu/FooterUI/ContentMargin/ContentHBox"]
+layout_mode = 2
+text = "Criar uma conta"
+
+[node name="CopyLabel" type="Label" parent="Menu/FooterUI/ContentMargin/ContentHBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Todos os direitos reservados."
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="RecoverAccountButton" type="Button" parent="Menu/FooterUI/ContentMargin/ContentHBox"]
+layout_mode = 2
+text = "Esqueceu a senha?"
 
 [node name="SignUpPanel" parent="Menu" instance=ExtResource("4_nw2bb")]
 visible = false
@@ -49,7 +84,5 @@ offset_bottom = 125.0
 
 [node name="CreateCharacterPanel" parent="Menu" instance=ExtResource("5_rs6c0")]
 visible = false
-
-[node name="PingLabel" parent="Menu" instance=ExtResource("2_rhksp")]
 
 [node name="Game" type="CanvasLayer" parent="."]
